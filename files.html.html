@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملفات التحميل</title>
+    <style>
+        @keyframes shuffleLoader {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-20px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(20px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes arrowAnimation {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+
+        @keyframes randomAnimation {
+            0% { background-color: #444; }
+            50% { background-color: #555; }
+            100% { background-color: #444; }
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222;
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            border: 2px solid transparent;
+            padding: 5px;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            border-color: #ff7e5f;
+            color: #ff7e5f;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #444;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 24px;
+            overflow: hidden;
+            outline: none;
+            transition: color 0.4s, background-color 0.4s, transform 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero button:hover {
+            background-color: #ff7e5f;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .hero button .icon {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero button .icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+            animation: arrowAnimation 1s infinite;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #333, #777);
+            background-size: 200% 200%;
+            z-index: -1;
+            animation: moveBackground 10s linear infinite;
+        }
+
+        .file-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 50px 20px;
+            background-color: #f0f0f0;
+        }
+
+        .file-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            margin: 10px;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            width: 300px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .file-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .file-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .file-card .content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .file-card .content h2 {
+            font-size: 22px;
+            margin: 0;
+            color: #333;
+        }
+
+        .file-card .download-btn {
+            margin-top: 20px;
+            background-color: #444;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .file-card .download-btn:hover {
+            background-color: #ff7e5f;
+            transform: scale(1.05);
+        }
+
+        .download-stats {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .loader .loader-box {
+            width: 50px;
+            height: 50px;
+            background: #ff7e5f;
+            animation: shuffleLoader 1s infinite;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html.html">الرئيسية</a>
+        <a href="contact.html.html">تواصل معنا</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <h1>ملفات التحميل</h1>
+        <p>استعرض مجموعة متنوعة من الملفات هنا. اختر الملف الذي تحتاجه وابدأ التحميل الآن.</p>
+    </div>
+
+    <div class="file-showcase">
+        <div class="file-card">
+            <img src="images/sample1.jpg" alt="الملفات الجاهزة 16V">
+            <div class="content">
+                <h2>الملفات الجاهزة 16V</h2>
+                <button class="download-btn" onclick="window.location.href='https://download843.mediafire.com/ht5tobcypcmg-_YKbisOhkbVVJzpZHkOTEGFRYMeKbvVzbkDGBMgxQ9Zx5WLsQuSVg44SSK1Klsd6Lwz4ds6aMpc_PBDHtfWYdiYYDySkCYzLOdRmqTulznpGPz6FJRndIcsRJ4sZKjHYpoEW9aYTTUso-uuEvBG3iQXIQowpTWy1kM/w1x79fpk7uvw27f/%D9%85%D9%88%D8%AF+%D8%A7%D9%84%D8%B4%D8%B1%D8%B7%D8%A9+%D8%A7%D9%84%D8%A7%D8%B5%D8%AF%D8%A7%D8%B1+16.rar'">تحميل</button>
+            </div>
+        </div>
+        <div class="file-card">
+            <img src="images/sample2.jpg" alt="الملفات الجاهزة V16_01">
+            <div class="content">
+                <h2>الملفات الجاهزة V16_01</h2>
+                <button class="download-btn" onclick="window.location.href='https://download946.mediafire.com/ns4qouvnnnbguOrixJE3-bOSD0ZCp0CWmSLuQQwwNYYpYxNxI2lbHCG0eIVmGVlxQV97PMp44DLyxLooGVgjZ2YmublAabRnuZm0Fm2v0_LnVPhIYBB6TpLN2Fdidn0pBEPRPbEFusYRni2VYOrEWwVQXndWNYxSrhPfEP_5NE2ef68/q2wnls6yspyljq7/LSPDFR+V16_01.rar'">تحميل</button>
+            </div>
+        </div>
+        <!-- Additional file cards -->
+        <div class="file-card">
+            <img src="images/sample3.jpg" alt="اصوات اسلحه">
+            <div class="content">
+                <h2>اصوات اسلحه</h2>
+                <button class="download-btn" onclick="window.location.href='https://download1587.mediafire.com/gls06cr9o0zgJeLHxKDA1sALkib8cfG3V79j62YRYDbpH9Uq_73r0QKunJzmO35t1NbAZkWu50H19bSY0XwQ8JdV_B-V3hT_w0yqCn_M1xt3Nb01Lr1E03dktrXDKDgQjvAfYG34snBCeRk73Wz73CyDbznTDQRmUEv4_BS0YEXYURg/jlwc65tqwe4vujc/%D8%A7%D8%B5%D9%88%D8%A7%D8%AA+%D8%A7%D8%B3%D9%84%D8%AD%D9%87.rar'">تحميل</button>
+            </div>
+        </div>
+        <div class="file-card">
+            <img src="images/sample4.jpg" alt="ساندي شورس ريميك V1">
+            <div class="content">
+                <h2>ساندي شورس ريميك V1</h2>
+                <button class="download-btn" onclick="window.location.href='https://download1532.mediafire.com/nrex0u4p6mlgI3Ba0d5gBp64bk32V9Nwxs-tYw1_XI4o0-cPAgxUvSdOthR6R3q9lBfU7nCbOgxe5ssgWZW8-sxUsiwRAyHFQUpFGR-HZPVKHI4CvIIu-bNMzihd5ug5Q_iHfWnHNWPDDsFPDXWGhXIPKgF5dX1GGr7tP4hhNrwyvvo/2l1b42c58kjzrue/%D8%B3%D8%A7%D9%86%D8%AF%D9%8A+%D8%B4%D9%88%D8%B1%D8%B3+%D8%B1%D9%8A%D9%85%D9%8A%D9%83+V1.rar'">تحميل</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 جميع الحقوق محفوظة</p>
+    </div>
+
+ <script>
+        // Object to store download counts
+        const downloadCounts = {
+            file16V: 0,
+            fileV16_01: 0,
+            fileExample1: 0,
+            fileExample2: 0
+        };
+    <div id="loader" class="loader">
+        <div class="loader-box"></div>
+    </div>
+    <script>
+        // Function to handle download count increment
+        function incrementDownloadCount(fileId) {
+            const countElement = document.getElementById(`${fileId}-downloads`);
+            let count = parseInt(countElement.textContent.replace(/\D/g, '')) || 0;
+            countElement.textContent = `عدد التنزيلات: ${count + 1}`;
+        }
+    </script>
+
+</body>
+</html>
+</body>
+</html>
