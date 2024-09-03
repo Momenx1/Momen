@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا</title>
+    <style>
+        @keyframes fallingParticles {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(100vh); }
+        }
+
+        @keyframes arrowAnimation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #fff; /* White background for the entire page */
+            color: #333; /* Dark text color */
+            overflow: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222; /* Darker navbar background */
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar a {
+            color: #ccc; /* Light text color */
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            border: 2px solid transparent;
+            padding: 5px;
+            transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            border-color: #ff7e5f;
+            color: #ff7e5f;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333; /* Dark background for hero section */
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: #444;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 24px;
+            overflow: hidden;
+            outline: none;
+            transition: color 0.4s, background-color 0.4s, transform 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero button:hover {
+            background-color: #ff7e5f;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .hero button .icon {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero button .icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+            animation: arrowAnimation 1s infinite;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #333; /* Solid color background for overlay */
+            z-index: -1;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .stars .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #fff;
+            width: 2px;
+            height: 2px;
+            opacity: 0.8;
+            animation: fallingParticles linear infinite;
+        }
+
+        .footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            margin: 50px 20px; /* Add some margin for spacing */
+            color: #333; /* Dark text color for contrast */
+            font-size: 18px;
+            text-align: center; /* Center align the text */
+        }
+
+        .contact-info a {
+            color: #ff7e5f; /* Link color */
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .arrow-down {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0; /* Margin for spacing */
+        }
+
+        .arrow-down svg {
+            width: 40px;
+            height: 40px;
+            fill: #ff7e5f; /* Arrow color */
+            animation: arrowAnimation 1s infinite; /* Animation for the arrow */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">الرئيسية</a>
+        <a href="#" onclick="showLoaderAndNavigateToContact()">تواصل معنا</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="stars">
+            <!-- Add more star particles -->
+            <div class="particle" style="top: 10%; left: 20%; animation-duration: 5s;"></div>
+            <div class="particle" style="top: 15%; left: 30%; animation-duration: 7s;"></div>
+            <div class="particle" style="top: 20%; left: 50%; animation-duration: 6s;"></div>
+            <div class="particle" style="top: 25%; left: 70%; animation-duration: 8s;"></div>
+            <div class="particle" style="top: 30%; left: 80%; animation-duration: 5s;"></div>
+            <div class="particle" style="top: 35%; left: 10%; animation-duration: 7s;"></div>
+            <div class="particle" style="top: 40%; left: 40%; animation-duration: 6s;"></div>
+            <div class="particle" style="top: 45%; left: 60%; animation-duration: 8s;"></div>
+            <div class="particle" style="top: 50%; left: 20%; animation-duration: 5s;"></div>
+            <div class="particle" style="top: 55%; left: 50%; animation-duration: 7s;"></div>
+        </div>
+        <h1>تواصل معنا</h1>
+        <p>لأي استفسارات أو دعم، لا تتردد في التواصل معنا.</p>
+        <div class="arrow-down">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path d="M12 16L7 11H17L12 16Z" fill="currentColor"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="contact-info">
+        <p>رابط الديسكورد: <a href="https://discord.gg/6gc9GdvB" target="_blank">https://discord.gg/6gc9GdvB</a></p>
+        <p>اتصل بنا: 01225012249 (واتس)</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 جميع الحقوق محفوظة</p>
+    </div>
+
+    <script>
+        function showLoaderAndNavigateToContact() {
+            const loader = document.getElementById('loader');
+            loader.classList.add('active'); // Show the loader
+
+            // Delay for loader display
+            setTimeout(() => {
+                window.location.href = 'contact us.html.html'; // Redirect to the contact page
+            }, 2000); // Adjust the timeout duration as needed
+        }
+
+        function scrollToContactInfo() {
+            document.querySelector('.contact-info').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
