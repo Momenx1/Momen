@@ -114,6 +114,7 @@
             height: 24px;
             fill: #fff;
             animation: arrowAnimation 1s infinite;
+            aria-hidden: true;
         }
 
         .hero-overlay {
@@ -221,14 +222,14 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            opacity: 0;
-            pointer-events: none;
+            opacity: 1;
+            pointer-events: all;
             transition: opacity 0.5s ease;
         }
 
         .loader.active {
-            opacity: 1;
-            pointer-events: all;
+            opacity: 0;
+            pointer-events: none;
         }
 
         .loader .loader-box {
@@ -244,7 +245,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5226528457005804"
      crossorigin="anonymous"></script>
 </head>
-</head>
 <body>
 
     <div class="navbar">
@@ -256,27 +256,13 @@
         <h1>ملفات التحميل</h1>
         <p>استعرض مجموعة متنوعة من الملفات هنا. اختر الملف الذي تحتاجه وابدأ التحميل الآن.</p>
     </div>
-
+    
     <div class="file-showcase">
         <div class="file-card">
-            <img src="Pictures\f5b8a5fc-a105-4b3f-8157-9b58b9c24bd0.jpg" alt="الملفات الجاهزة 16V">
+            <img src="images/new_file_image.jpg" alt="الملفات الجاهزة اصدار 17">
             <div class="content">
-                <h2>الملفات الجاهزة 16V</h2>
-                <button class="download-btn" onclick="window.location.href='https://download843.mediafire.com/0uuf91jwklfg-JEgnRqUGPMRPhSQSn2pnx-7iHdBCiab9xsjVRC_7kDGi3byilCt4TyDzHvLBFUO4_0Nd_jeo_4H-ZNXFF0BwTyjwHAItE8gksS4bbrnmoQnXpp2u6akMOfMs8dZZVM27iSwKAMRj7e-y8YqzvJ6D-iOOp8I6GxF2iI/w1x79fpk7uvw27f/%D9%85%D9%88%D8%AF+%D8%A7%D9%84%D8%B4%D8%B1%D8%B7%D8%A9+%D8%A7%D9%84%D8%A7%D8%B5%D8%AF%D8%A7%D8%B1+16.rar'">تحميل</button>
-            </div>
-        </div>
-        <div class="file-card">
-            <img src="images/sample2.jpg" alt="الملفات الجاهزة V16_01">
-            <div class="content">
-                <h2>الملفات الجاهزة V16_01</h2>
-                <button class="download-btn" onclick="window.location.href='https://download946.mediafire.com/yji85axvonsgZZM9EZIj4fZtCrsaR_bwkFjSJcFpgSvt8uaEG4AOrInPP3rdutfXHHx12KnB_jeVQwoisWHvfLexHzM22OSAA2rTiohV30Uf8RiEZGfYH5L9sbR4Xff93SRO3R_AC5Nv1UW6kkOmIDr0DocswuVb89CqppEMXWy9qNo/q2wnls6yspyljq7/LSPDFR+V16_01.rar'">تحميل</button>
-            </div>
-        </div>
-        <div class="file-card">
-            <img src="images/sample3.jpg" alt="اصوات اسلحه">
-            <div class="content">
-                <h2>اصوات اسلحه</h2>
-                <button class="download-btn" onclick="window.location.href='https://download1587.mediafire.com/kv2mkb10ouggYi0gA0yl4a6jLlMoRdgd1KPqxPR97SKSv7wgZr1XciIDtTpfZLqa8sy4sni_h0Hs3G2neZ7LFm-V25xWFOiIy3E8duBa3BkNZ1I12GHlyA7YsW1GKlYqL-JvbX9I6aGv5lUPY8VOOoPcm9MlpFA4LMcFkAmalLUfj2Q/jlwc65tqwe4vujc/%D8%A7%D8%B5%D9%88%D8%A7%D8%AA+%D8%A7%D8%B3%D9%84%D8%AD%D9%87.rar'">تحميل</button>
+                <h2>الملفات الجاهزة اصدار 17</h2>
+                <button class="download-btn" onclick="window.location.href='https://download1323.mediafire.com/fxe1ovn6swmgNp8OnBTreiK7q9IRG62jYnGUSB8IgLuzZChGWkZaLTVkDtkcKc5GaQ5FKiPEzACZMRX30wcZ1Zz_K_fUcy_LYGVR84TGth2ZMBTXjzk-IuWTyDLMFXlBhgcbaCkjLoOr0T9pNvusXxUz_BiElRYuNY9RX6XlwqHqDNc/p52pmcgrzb07du9/%D8%A7%D9%84%D9%85%D9%84%D9%81%D8%A7%D8%AA+%D8%A7%D9%84%D8%AC%D8%A7%D9%87%D8%B2%D9%87+%D8%A7%D8%B5%D8%AF%D8%A7%D8%B1+17.rar'">تحميل</button>
             </div>
         </div>
         <div class="file-card">
@@ -286,20 +272,13 @@
                 <button class="download-btn" onclick="window.location.href='https://download1532.mediafire.com/xtfzkmfrokvgRiMcdC_8OnnWjAMZvLd-ZanUD5Vcsn6c0oMKBx9zSUAQU9y8vF6rZiaBZj_TtQXHkSuqCVGslfXlHsjFPzHSHepFN1Wf0USeqfBMPu40Yfsu-4gcp2oSZ7KP-VsVaozosEshaVo66KwhTelgTQiBfKCPsvp0Nnq8hOY/2l1b42c58kjzrue/%D8%B3%D8%A7%D9%86%D8%AF%D9%8A+%D8%B4%D9%88%D8%B1%D8%B3+%D8%B1%D9%8A%D9%85%D9%8A%D9%83+V1.rar'">تحميل</button>
             </div>
         </div>
-        <div class="file-card">
-            <img src="images/sample5.jpg" alt="ScriptHookV">
-            <div class="content">
-                <h2>ScriptHookV</h2>
-                <button class="download-btn" onclick="window.location.href='https://download2363.mediafire.com/0ee97onvp4mg8YoXyE19t_WxEFV7Ax-7--whJa5QQoUW97HYUic3xzzQth4Vto_xURvOCC8Zcz8iHsFePPNbN-0KM3az6MrswZaY6QyxWtC_i7gLRkBx1QfB9HW_wrq3rqzA3JchCASJmBmnfeaKbTITOIXFpQeOBJlIvmBxOOA03sk/afvd0d54wkhuck7/ScriptHookV_1.0.3337.0.zip'">تحميل</button>
-            </div>
-        </div>
     </div>
 
     <div class="footer">
         <p>&copy; 2024 حقوق النشر. جميع الحقوق محفوظة.</p>
     </div>
 
-    <div class="loader">
+    <div class="loader active">
         <div class="loader-box"></div>
     </div>
 
